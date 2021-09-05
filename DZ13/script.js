@@ -19,12 +19,12 @@ const ul = document.createElement('ul');
 document.body.prepend(ul);
 
 button.addEventListener('click', () => {
-    if (input.value != false) {
+    if (input.value) {
         const li = document.createElement('li');
         li.innerText = input.value;
         ul.append(li);
-        input.value = " ";
-    } else return;
+        input.value = "";
+    }
 });
 
 
