@@ -1,0 +1,40 @@
+body{
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    width: 750px;
+}
+button{
+    width: 50px;
+    height: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+ul{
+    display: flex;
+}
+
+li{
+    margin: 0 2px;
+    list-style: none;
+}
+.title li {
+    margin: 0 65px;
+    font-weight: bold;
+}
+#result{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+#result li{
+    width: 150px;
+    margin: 0 15px;
+}
+
+
+
+
