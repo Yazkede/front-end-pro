@@ -13,7 +13,9 @@ const inputSurname = document.querySelector('[name ="surname"]');
 const inputPhone = document.querySelector('[name ="phone"]');
 const button = document.querySelector('button');
 
-button.addEventListener('click', () => {
+button.addEventListener('click', onAddContactClick);
+
+function onAddContactClick() {
     if (inputName.value && inputSurname.value && inputPhone.value) {
         const li1 = document.createElement('li');
         const li2 = document.createElement('li');
@@ -30,5 +32,5 @@ button.addEventListener('click', () => {
         inputName.value = "";
         inputSurname.value = "";
         inputPhone.value = "";
-    } else alert('error')
-});
+    } else alert('error');
+}
