@@ -12,31 +12,31 @@
 
 function CreateCalculator(base) {
     this.base = base;
-    this.add(b) {
+    this.add = function (b) {
         if (typeof b === 'number') {
-            num += b;
-            console.log(num);
+            base += b;
+            console.log(base);
         } else {
             console.log('NaN');
         }
     }
-    this.sub(b) {
+    this.sub = function (b) {
         if (typeof b === 'number') {
-            num -= b;
-            console.log(num);
+            base -= b;
+            console.log(base);
         } else {
             console.log('NaN');
         }
     }
-    this.set(b) {
+    this.set = function (b) {
         if (typeof b === 'number') {
-            num = b;
+            base = b;
         } else {
             console.log('NaN');
         }
     }
-    this.get() {
-        b = num;
+    this.get = function (b) {
+        b = base;
         console.log(b);
     }
 }
@@ -52,35 +52,3 @@ calculator.add(10); // 40
 calculator.add('qwe'); // NaN и значение 40 не менять
 calculator.get(); // 40 
 
-function createCalculator(a) {
-    let num = a;
-    return {
-        add(b) {
-            if (typeof b === 'number') {
-                num += b;
-                console.log(num);
-            } else {
-                console.log('NaN');
-            }
-        },
-        sub(b) {
-            if (typeof b === 'number') {
-                num -= b;
-                console.log(num);
-            } else {
-                console.log('NaN');
-            }
-        },
-        set(b) {
-            if (typeof b === 'number') {
-                num = b;
-            } else {
-                console.log('NaN');
-            }
-        },
-        get() {
-            b = num;
-            console.log(b);
-        }
-    }
-}
