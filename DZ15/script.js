@@ -5,7 +5,7 @@
 // Обработка событий должна быть сделана через делегирование
 
 const list = document.querySelector('#list');
-const input = document.querySelector('[name ="myinput"]');
+const input = document.querySelector('#mainField');
 const button = document.querySelector('button');
 
 const CLASS_DELETE_BTN = 'delete-btn';
@@ -16,22 +16,18 @@ const ourTemplate = `
     <span class='delete-btn'>[x]</span>
 `;
 const element = 'element';
+const sublist = 'sublist';
+const div = 'div';
 
-button.addEventListener('click', onAddTaskClick)
-list.addEventListener('click', onRemoveTaskClick);
-list.addEventListener('click', onDoneTaskClick);
-
-//Кнопки работают не корректно:
-//- DONE - красит весь список сразу;
-//- DELETE - удаляет всё сразу и больше не добавляет текст в список.
-//Что с этим делать - я не могу сообразить.
+button.addEventListener('click', onAddTaskClick);
+list.addEventListener('click', onListClick);
 
 function onAddTaskClick() {
     if (input.value) {
         const div_sublist = document.createElement('div');
-        div_sublist.classList.add('sublist');
+        div_sublist.classList.add(sublist);
         const div = document.createElement('div');
-        div.classList.add('element');
+        div.classList.add(element);
         div.innerText = input.value;
         list.append(div);
         list.insertAdjacentHTML('beforeend', ourTemplate);
@@ -39,62 +35,13 @@ function onAddTaskClick() {
     }
 }
 
-function onDoneTaskClick(e) {
-    if (e.target.classList.contains(CLASS_DONE_BTN)) {
-        list.classList.toggle(CLASS_DONE);
-    }
-}
-
-function onRemoveTaskClick(e) {
+function onListClick(e) {
     if (e.target.classList.contains(CLASS_DELETE_BTN)) {
-        e.target.parentNode.remove();
+        e.target.closest(element).remove();
+        return;
     }
-}
-
-/*function addDoneButton() {
-    li.append(doneButton);
-    doneButton.classList.add(CLASS_DONE_BTN);
-}
-
-function addDeleteButton() {
-    li.append(deleteButton);
-    deleteButton.classList.add(CLASS_DELETE_BTN);
-}*/
-
-/* const ourTemplate = `
-    <li id='element'></li>
-    <span class='done'>[v]</span>
-    <span class='delete'>[x]</span>
-`;
-const list = document.querySelector('#list');
-const input = document.querySelector('[name ="myinput"]');
-const button = document.querySelector('button');
-const CLASS_DELETE_BTN = 'delete';
-const CLASS_DONE_BTN = 'done';
-const CLASS_DONE = '.done';
-
-
-button.addEventListener('click', onAddTaskClick);
-list.addEventListener('click', onDoneTaskClick);
-list.addEventListener('click', onRemoveTaskClick);
-
-function onAddTaskClick() {
-    if (input.value) {
-        list.insertAdjacentHTML('afterbegin', ourTemplate);
-        element.innerText = input.value;
-        input.value = "";
-    }
-}
-
-function onDoneTaskClick(e) {
     if (e.target.classList.contains(CLASS_DONE_BTN)) {
-        e.target.classlist.toggle(CLASS_DONE);
+        e.target.closest(element).toggle(CLASS_DONE);
     }
 }
 
-function onRemoveTaskClick(e) {
-    if (e.target.classList.contains(CLASS_DELETE_BTN)) {
-        e.target.closest(list).remove();
-    }
-}
- */
