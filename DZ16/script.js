@@ -12,43 +12,43 @@
 
 function CreateCalculator(base) {
     this.base = base;
+
     this.add = function (b) {
-        if (typeof b === 'number') {
-            base += b;
-            console.log(base);
-        } else {
-            console.log('NaN');
+        if (isNumber(b)) {
+            return base += b;
         }
+        return NaN;
     }
     this.sub = function (b) {
-        if (typeof b === 'number') {
-            base -= b;
-            console.log(base);
-        } else {
-            console.log('NaN');
+        if (isNumber(b)) {
+            return base -= b;
         }
+        return NaN;
     }
     this.set = function (b) {
-        if (typeof b === 'number') {
+        if (isNumber(b)) {
             base = b;
-        } else {
-            console.log('NaN');
         }
     }
     this.get = function (b) {
-        b = base;
-        console.log(b);
+        return b = base;
+    }
+}
+
+function isNumber(num) {
+    if (typeof num === 'number') {
+        return num;
     }
 }
 
 const calculator = new CreateCalculator(100);
 
-calculator.add(10); // 110
-calculator.add(10); // 120
-calculator.sub(20); // 100
-calculator.set(20); // 
-calculator.add(10); // 30
-calculator.add(10); // 40
-calculator.add('qwe'); // NaN и значение 40 не менять
-calculator.get(); // 40 
+console.log(calculator.add(10)); // 110
+console.log(calculator.add(10)); // 120
+console.log(calculator.sub(20)); // 100
+(calculator.set(20)); // 
+console.log(calculator.add(10)); // 30
+console.log(calculator.add(10)); // 40
+console.log(calculator.add('qwe')); // NaN и значение 40 не менять
+console.log(calculator.get());// 40 
 
