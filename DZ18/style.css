@@ -1,0 +1,12 @@
+body {
+    max-width: 1200px;
+    background-color: rgb(141, 126, 126);
+    margin: 0 auto;
+}
+
+.size li {
+    list-style: none;
+}
+.addlist li {
+    list-style: none;
+}
