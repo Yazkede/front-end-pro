@@ -34,39 +34,41 @@ console.log("Callories with sauce: “ + hamburger.getCallories());
  */
 
 
-const BURGER_SMALL = document.querySelector('.small');
-const BURGER_MIDDLE = document.querySelector('.middle');
-const BURGER_BIG = document.querySelector('.big');
-const CHEESE = document.querySelector('.cheese');
-const SALAD = document.querySelector('.salad');
-const POTATO = document.querySelector('.potato');
-const SEASONING = document.querySelector('.seasoning');
-const MAYONNAISE = document.querySelector('.mayonnaise');
-const btn = document.querySelector('#btn');
-const price = document.querySelector('.prise');
-const callories = document.querySelector('.callories');
-
-const SMALLPRISE = 50;
-const MIDDLEPRISE = 75;
-const BIGPRISE = 100;
-const CHEESEPRISE = 10;
-const SALADPRISE = 20;
-const POTATOPRISE = 15;
-const SEASONINGPRISE = 15;
-const MAYONNAISEPRISE = 20;
-
-const SMALLCALLORIES = 20;
-const MIDDLECALLORIES = 30;
-const BIGCALLORIES = 40;
-const CHEESECALLORIES = 20;
-const SALADCALLORIES = 5;
-const POTATOCALLORIES = 10;
-const SEASONINGCALLORIES = 0;
-const MAYONNAISECALLORIES = 5;
-
 function Gamburger(size, additional) {
     this.size = size;
     this.additional = additional;
+    Gamburger.SIZE_SMALL = {
+        price: 50,
+        callories: 20,
+    }
+    Gamburger.SIZE_MEDIUM = {
+        price: 75,
+        callories: 30,
+    }
+    Gamburger.SIZE_BIG = {
+        price: 100,
+        callories: 40,
+    }
+    Gamburger.TOPPING_CHEESE = {
+        price: 10,
+        callories: 20,
+    }
+    Gamburger.TOPPING_SALAD = {
+        price: 20,
+        callories: 5,
+    }
+    Gamburger.TOPPING_POTATO = {
+        price: 15,
+        callories: 10,
+    }
+    Gamburger.TOPPING_SEASON = {
+        price: 15,
+        callories: 0,
+    }
+    Gamburger.TOPPING_MAYO = {
+        price: 20,
+        callories: 5,
+    }
 }
 
 Gamburger.prototype.burgerPrice = function () {
@@ -91,10 +93,12 @@ Gamburger.prototype.calculatePrice = function () {
     return burgPrise + addPrise;
 }
 
-let burger = new Gamburger();
+const hamburger = new Gamburger(Gamburger.SIZE_SMALL);
 burger.burgerPrice(SMALLPRISE);
 burger.plusAdd(CHEESEPRISE);
 burger.calculatePrice(SMALLPRISE, CHEESEPRISE);
+gamburger.addTopping(Gamburger.TOPPING_MAYO);
+gamburger.addTopping(Gamburger.TOPPING_POTATO);
 
 btn.addEventListener('click', function () {
     price.innerHTML = "Burger cost " + burger.calculatePrice() + "$";
